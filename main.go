@@ -1,42 +1,51 @@
 package main
 
 import (
-	"log"
-	"net/http"
+	"context"
 	"os"
+	"os/signal"
+	"syscall"
 
-	"github.com/gorilla/mux"
+	"github.com/Sirupsen/logrus"
+	"github.com/golangbg/site/twitterbot"
+	"github.com/golangbg/site/webserver"
 )
-
-// URL contains the Slack API url for sending invitations
-const (
-	URL = "https://golangbg.slack.com/api/users.admin.invite"
-)
-
-// Token is a global variable containing the Slack API token
-var token string
 
 func main() {
-	// Get the Slack token, end execution if there isn't one
-	token = os.Getenv("SI_TOKEN")
-	if token == "" {
-		log.Fatal("SI_TOKEN is empty")
+	// Create a logger
+	log := logrus.New()
+
+	interrupt := make(chan os.Signal, 1)
+	signal.Notify(interrupt, os.Interrupt, syscall.SIGTERM)
+
+	// Start the webserver
+	log.Infoln("[webserver] starting")
+	srv := webserver.New(log)
+	go func() {
+		log.Fatal(srv.ListenAndServe())
+	}()
+	log.Infoln("[webserver] started")
+
+	// Start the twitterbot
+	log.Infoln("[twitterbot] starting")
+	tb, err := twitterbot.New(log, "#golangbg", "#golang")
+	if err != nil {
+		log.Errorf("[twitterbot] %v", err)
+	} else {
+		go tb.Start()
+		log.Infoln("[twitterbot] started")
 	}
 
-	// Get the Port.
-	// The code is optimized for deployment on Heroku, therefore the env name needs to be PORT
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "80"
+	killSignal := <-interrupt
+	switch killSignal {
+	case os.Interrupt:
+		log.Infoln("received SIGINT")
+	case syscall.SIGTERM:
+		log.Infoln("received SIGTERM")
 	}
 
-	// Setup a router
-	r := mux.NewRouter()
-	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
-	r.HandleFunc("/slack", SlackGetHandler).Methods(http.MethodGet)
-	r.HandleFunc("/slack", SlackPostHandler).Methods(http.MethodPost)
-	r.HandleFunc("/", HomeHandler)
-
-	// Start the server
-	log.Fatal(http.ListenAndServe(":"+port, r))
+	log.Infoln("shutting down...")
+	srv.Shutdown(context.Background())
+	tb.Shutdown()
+	log.Infoln("shutdown completed")
 }

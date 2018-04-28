@@ -3,6 +3,53 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "LXwhuwfh4S+97nKVedaseJOhRIg=",
+			"path": "github.com/ChimeraCoder/anaconda",
+			"revision": "a1f48994eee061428eadcac94cf5fe98dbab0967",
+			"revisionTime": "2018-03-05T15:13:39Z"
+		},
+		{
+			"checksumSHA1": "PWDF+wMr+P6OovM4oYbdQdD/rsk=",
+			"origin": "github.com/ChimeraCoder/anaconda/vendor/github.com/ChimeraCoder/tokenbucket",
+			"path": "github.com/ChimeraCoder/tokenbucket",
+			"revision": "a1f48994eee061428eadcac94cf5fe98dbab0967",
+			"revisionTime": "2018-03-05T15:13:39Z"
+		},
+		{
+			"checksumSHA1": "EXTgr18s2tlxwaOjaZXMw75R6Bc=",
+			"path": "github.com/Sirupsen/logrus",
+			"revision": "778f2e774c725116edbc3d039dc0dfc1cc62aae8",
+			"revisionTime": "2018-03-29T22:59:52Z"
+		},
+		{
+			"checksumSHA1": "3RgReu+42CU1EQ6afDsVSvBuPyk=",
+			"origin": "github.com/ChimeraCoder/anaconda/vendor/github.com/azr/backoff",
+			"path": "github.com/azr/backoff",
+			"revision": "a1f48994eee061428eadcac94cf5fe98dbab0967",
+			"revisionTime": "2018-03-05T15:13:39Z"
+		},
+		{
+			"checksumSHA1": "ycg56E+pTPAHToKMIj8C5SZ+WYQ=",
+			"origin": "github.com/ChimeraCoder/anaconda/vendor/github.com/dustin/go-jsonpointer",
+			"path": "github.com/dustin/go-jsonpointer",
+			"revision": "a1f48994eee061428eadcac94cf5fe98dbab0967",
+			"revisionTime": "2018-03-05T15:13:39Z"
+		},
+		{
+			"checksumSHA1": "2138MttIW/b+UkA4YMYcTc6yzOU=",
+			"origin": "github.com/ChimeraCoder/anaconda/vendor/github.com/dustin/gojson",
+			"path": "github.com/dustin/gojson",
+			"revision": "a1f48994eee061428eadcac94cf5fe98dbab0967",
+			"revisionTime": "2018-03-05T15:13:39Z"
+		},
+		{
+			"checksumSHA1": "3f+0/jzvM73c4omzvKWwGnswf3k=",
+			"origin": "github.com/ChimeraCoder/anaconda/vendor/github.com/garyburd/go-oauth/oauth",
+			"path": "github.com/garyburd/go-oauth/oauth",
+			"revision": "a1f48994eee061428eadcac94cf5fe98dbab0967",
+			"revisionTime": "2018-03-05T15:13:39Z"
+		},
+		{
 			"checksumSHA1": "g/V4qrXjUGG9B+e3hB+4NAYJ5Gs=",
 			"path": "github.com/gorilla/context",
 			"revision": "08b5f424b9271eedf6f9f0ce86cb9396ed337a42",
@@ -13,6 +60,24 @@
 			"path": "github.com/gorilla/mux",
 			"revision": "5ab525f4fb1678e197ae59401e9050fa0b6cb5fd",
 			"revisionTime": "2017-12-08T16:08:15Z"
+		},
+		{
+			"checksumSHA1": "BGm8lKZmvJbf/YOJLeL1rw2WVjA=",
+			"path": "golang.org/x/crypto/ssh/terminal",
+			"revision": "b49d69b5da943f7ef3c9cf91c8777c1f78a0cc3c",
+			"revisionTime": "2018-04-25T14:55:48Z"
+		},
+		{
+			"checksumSHA1": "+juscVyopcUmEez08ei4bcOoET4=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "cbbc999da32df943dac6cd71eb3ee39e1d7838b9",
+			"revisionTime": "2018-04-27T04:24:54Z"
+		},
+		{
+			"checksumSHA1": "Dfz4tGItokMvHZENCsBmPPB8FGQ=",
+			"path": "golang.org/x/sys/windows",
+			"revision": "cbbc999da32df943dac6cd71eb3ee39e1d7838b9",
+			"revisionTime": "2018-04-27T04:24:54Z"
 		}
 	],
 	"rootPath": "github.com/golangbg/site"
