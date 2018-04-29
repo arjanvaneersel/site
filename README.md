@@ -6,7 +6,9 @@ Simple website for golangbg.org using pure Go, HTML and CSS. Work in progress, w
 
 ## Todo
 - [X] Integration with the Twitter account
-- [ ] Integration with the Facebook page
+- [ ] Meetup integration
+- [ ] Integration with the Facebook page (problematic ATM)
+- [ ] Automatically post new meetup events to Twitter and Facebook
 - [ ] Support for English and Bulgarian
 - [ ] Simple admin interface to add pages in a simple way
 

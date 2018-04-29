@@ -1,6 +1,3 @@
 # Contributors to the project
 
-## Maintainer
-* Arjan van Eersel <arjan@golangbg.org>
-
-## Contributors
+Arjan van Eersel <arjan@golangbg.org>

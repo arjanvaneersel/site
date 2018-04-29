@@ -28,7 +28,7 @@ func main() {
 
 	// Start the twitterbot
 	log.Infoln("[twitterbot] starting")
-	tb, err := twitterbot.New(log, "#golangbg", "#golang")
+	tb, err := twitterbot.New(log)
 	if err != nil {
 		log.Errorf("[twitterbot] %v", err)
 	} else {
