@@ -2,6 +2,8 @@ package webserver
 
 import (
 	"net/http"
+
+	mu "github.com/golangbg/site/meetup"
 )
 
 var (
@@ -13,7 +15,37 @@ var (
 
 // HomeHandler handles calls to the home page
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	HomeTemplate.Execute(w, nil)
+	var sEvents, pEvents []mu.Event
+
+	muapi, err := mu.New()
+	if err == nil {
+		sEvents, err = muapi.GetEvents(
+			"golang-bulgaria",
+			mu.WithStatus("draft"),
+			mu.WithDesc(true),
+			mu.WithFields("featured_photo", "plain_text_description", "short_link"),
+		)
+		if err != nil {
+			// Handle error
+		}
+
+		pEvents, err = muapi.GetEvents(
+			"Golang-Bulgaria-Plovdiv",
+			mu.WithStatus("upcoming", "past"),
+			mu.WithDesc(true),
+			mu.WithFields("featured_photo", "plain_text_description", "short_link"),
+		)
+		if err != nil {
+			// Handle error
+		}
+	}
+
+	data := map[string]interface{}{
+		"SofiaEvents":   sEvents,
+		"PlovdivEvents": pEvents,
+	}
+
+	HomeTemplate.Execute(w, data)
 }
 
 // SlackGetHandler handles GET calls to the slack page

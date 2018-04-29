@@ -1,6 +1,6 @@
 {{ define "content" }}
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-xs-12">
         <h2>Welcome!</h2>
         <p>Welcome to Golang Bulgaria.</p> 
         <p>Not much to see here yet, one day we'll make a decent website.</p>
@@ -8,4 +8,36 @@
         <p>Also you can get an <a href="/slack">invitation</a> to our Slack.</p>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-6 col-xs-12">
+        <h2>Sofia meetups</h2>
+        {{ range $i, $event := .SofiaEvents }}
+            <div class="card" style="width: 18rem;">
+                    {{ if $event.FeaturedPhoto }}<img class="card-img-top" src="{{ $event.FeaturedPhoto.PhotoLink }}" alt="{{ $event.Name }}">{{ end }}
+                <div class="card-body">
+                    <p class="card-text">{{ $event.Time }}</p>
+                    <h5 class="card-title">{{ $event.Name }}</h5>
+                    <p class="card-text">{{ $event.PlainTextDescription }}</p>
+                    <a href="{{ $event.ShortLink }}" class="btn btn-primary">Read more</a>
+                </div>
+            </div>
+        {{ end }}
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <h2>Plovdiv meetups</h2>
+        {{ range $i, $event := .PlovdivEvents }}
+            <div class="card" style="width: 18rem;">
+                    {{ if $event.FeaturedPhoto }}<img class="card-img-top" src="{{ $event.FeaturedPhoto.PhotoLink }}" alt="Card image cap">{{ end }}
+                <div class="card-body">
+                    <p class="card-text">{{ $event.Time }}</p>
+                    <h5 class="card-title">{{ $event.Name }}</h5>
+                    <p class="card-text">{{ $event.PlainTextDescription }}</p>
+                    <a href="{{ $event.ShortLink }}" class="btn btn-primary">Read more</a>
+                </div>
+            </div>
+        {{ end }}
+    </div>
+</div>
+
 {{ end }}
